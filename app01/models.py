@@ -20,13 +20,13 @@ class AuthorDetail(models.Model):
 
 
 class Publish(models.Model):
-    nid = models.AutoField()
+    nid = models.AutoField(primary_key=True)
     name = models.CharField(max_length=32)
     city = models.CharField(max_length=32)
     email = models.EmailField()
 
 class Book(models.Model):
-    nid = models.AutoField()
+    nid = models.AutoField(primary_key=True)
     title = models.CharField(max_length=32)
     publishDate = models.DateField()
     price = models.DecimalField(max_digits=5,decimal_places=2)
@@ -36,5 +36,12 @@ class Book(models.Model):
 
     #与Author建立多对多的关系，关系可以建在任意一方，自动创建第三章表
     authors=models.ManyToManyField(to="Author",)
+
+class Emp(models.Model):
+    name=models.CharField(max_length=32)
+    age = models.IntegerField()
+    salary=models.DecimalField(max_digits=8,decimal_places=2)
+    dep=models.CharField(max_length=32)
+    province=models.CharField(max_length=32)
 
 
